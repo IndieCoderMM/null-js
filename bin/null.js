@@ -1,24 +1,24 @@
 #!/usr/bin/env node
 const { program } = require("commander");
-const core = require("../lib/core");
+const { initProject } = require("../lib/init");
 const model = require("../lib/model");
-const scaffold = require("../lib/scaffold");
+const { generateApi } = require("../lib/api");
 
 program.version("0.0.1");
 
 program
   .command("init")
   .description("Initialize a new project")
-  .action(core.init);
+  .action(initProject);
 
 program
-  .command("create:model <modelName> [attributes...]")
+  .command("generate:model <modelName> [attributes...]")
   .description("Generate a new Sequelize model and migration")
   .action(model.create);
 
 program
-  .command("scaffold:api <modelName>")
+  .command("generate:api <modelName>")
   .description("Generate basic API files for a resource")
-  .action(scaffold.api);
+  .action(generateApi);
 
 program.parse(process.argv);
