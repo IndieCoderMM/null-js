@@ -1,4 +1,4 @@
-module.exports = `const CustomError = require("@utils/CustomError");
+const CustomError = require("@utils/CustomError");
 
 /**
  * Generic Service Class for Sequelize Models
@@ -12,6 +12,7 @@ class BaseService {
     if (!model) {
       throw new Error("Model is required");
     }
+
     this.model = model;
   }
 
@@ -67,4 +68,3 @@ class BaseService {
 }
 
 module.exports = BaseService;
-`;
